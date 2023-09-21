@@ -1,17 +1,20 @@
 var express  =require('express')
 var empcollection= require('../model/employeemodel')
 
+// this Endpoint will create a document in data base collection
+/*for Adding the Employee you need all the info
+of Employee like(FirstName,LastName,Gender,Email,Studio,Designation and DateOfBirth in( yyyy-mm-dd) format)
+*/
  exports.createEmployee =  async function(req,res){
     try{
         console.log(req.body)
-    var count = 0
     var EmpID =(Math.random() + 1).toString(36).substring(7)
 
     var FirstName = req.body.FirstName;
     var LastName = req.body.LastName;
     var Address =req.body.Address;
     var Gender =req.body.Gender;
-    var DateOfBirth = req.body.DateOfBirth;
+    var DateOfBirth = req.body.DateOfBirth;// (yyyy-mm-dd)
     var EmailID =req.body.EmailID;
     var Studio = req.body.Studio;
     var Designation = req.body.Designation;
@@ -37,6 +40,7 @@ var empcollection= require('../model/employeemodel')
    } 
 }
 
+//This Api will get you all the Employee with their Employee Details
 exports.getEmployee =  async function(req,res){
     try{
        
@@ -50,7 +54,9 @@ exports.getEmployee =  async function(req,res){
    } 
 }
 
-
+//This Api will Update the Employee details
+/* This will take (FirstName,LastName,Gender,Email,Studio,Designation and DateOfBirth in( yyyy-mm-dd) format) what you want to update 
+and  will take EMPID for the filter condition*/ 
 exports.updateEmployeeDetails =  async function(req,res){
     try{
         var EmpID = req.body.EmpID;
@@ -58,7 +64,7 @@ exports.updateEmployeeDetails =  async function(req,res){
         var LastName = req.body.LastName;
         var Address =req.body.Address;
         var Gender =req.body.Gender;
-        var DateOfBirth = req.body.DateOfBirth;
+        var DateOfBirth = req.body.DateOfBirth;// (yyyy-mm-dd)
         var EmailID =req.body.EmailID;
         var Studio = req.body.Studio;
         var Designation = req.body.Designation;
@@ -80,7 +86,8 @@ exports.updateEmployeeDetails =  async function(req,res){
    } 
 }
 
-
+// This will Delete the Employee from Data base 
+/* This will take only Employee ID to Delete an Employee (EmpID)*/ 
 exports.deleteEmployee =  async function(req,res){
     try{
        var EmpID = req.body.EmpID
